@@ -2,8 +2,8 @@
 
 $host = "localhost";
 $username = "root";
-$password = "";
-// $password = "kambingjawa";
+// $password = "";
+$password = "kambingjawa";
 $database = "ima";
 
 $koneksi = mysqli_connect($host, $username, $password, $database);
@@ -12,4 +12,12 @@ $koneksi = mysqli_connect($host, $username, $password, $database);
 
 if (!$koneksi) {
     echo "Koneksi gagal " . mysqli_connect_error();
+}
+
+
+function formatTanggal($tanggal)
+{
+    $formatTanggal = date("d F Y", strtotime($tanggal));
+
+    return $formatTanggal;
 }

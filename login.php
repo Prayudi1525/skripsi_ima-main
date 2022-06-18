@@ -35,6 +35,7 @@ if (isset($_POST['login'])) {
 
     $_SESSION['username'] = $row['name'];
     $User = $_SESSION['username'];
+    $userId = $row['id'];
     $_SESSION['role_id'] = $row['role_id'];
 
     if ($row['role_id'] == "1") {

@@ -7,6 +7,15 @@ include "../../functions/connect.php";
 if (!isset($_SESSION['username']) || $_SESSION['role_id'] != '1') {
   header("location: ../../login.php");
 }
+
+$username = $_SESSION['username'];
+$queryUser = "SELECT * FROM users WHERE name='$username'";
+$hasil = mysqli_query($koneksi, $queryUser);
+
+$rowUser = mysqli_fetch_array($hasil);
+$User = $_SESSION['username'];
+$userId = $rowUser['id'];
+
 ?>
 
 <!DOCTYPE html>
@@ -31,9 +40,9 @@ if (!isset($_SESSION['username']) || $_SESSION['role_id'] != '1') {
   <div class="wrapper">
 
     <!-- Preloader -->
-    <div class="preloader flex-column justify-content-center align-items-center">
+    <!-- <div class="preloader flex-column justify-content-center align-items-center">
       <img class="animation__wobble" src="../../dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-    </div>
+    </div> -->
 
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-dark">
@@ -246,6 +255,23 @@ if (!isset($_SESSION['username']) || $_SESSION['role_id'] != '1') {
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-spinner"></i>
+                <p>
+                  Proses
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="index.php?p=draft_preuse" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Draft</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-check-square"></i>
                 <p>
                   Approval
@@ -339,10 +365,10 @@ if (!isset($_SESSION['username']) || $_SESSION['role_id'] != '1') {
 
     <!-- Main Footer -->
     <footer class="main-footer">
-      <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+      <strong>Copyright &copy; 2022 Ima Prayudi.</strong>
       All rights reserved.
       <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 3.2.0
+        <b>Version</b> 1.0
       </div>
     </footer>
   </div>

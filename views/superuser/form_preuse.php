@@ -1,3 +1,58 @@
+<?php
+
+
+if (isset($_POST['simpan'])) {
+
+    $equipment_id = $_POST['equipment_id'];
+
+    $air_radiator = $_POST['air_radiator'];
+    $hose_radiator = $_POST['hose_radiator'];
+    $v_belt = $_POST['v_belt'];
+    $tangki_bbm = $_POST['tangki_bbm'];
+    $oli_engine = $_POST['oli_engine'];
+    $oli_hydraulik = $_POST['oli_hydraulik'];
+    $air_accu = $_POST['air_accu'];
+    $kabel_battery = $_POST['kabel_battery'];
+    $kepala_battery = $_POST['kepala_battery'];
+    $tpkb = $_POST['tpkb'];
+    $lampu_rotary = $_POST['lampu_rotary'];
+    $lampu_depan = $_POST['lampu_depan'];
+    $lampu_rem = $_POST['lampu_rem'];
+    $lampu_mundur = $_POST['lampu_mundur'];
+    $lampu_sein = $_POST['lampu_sein'];
+    $indikator_pa = $_POST['indikator_pa'];
+    $indikator_ta = $_POST['indikator_ta'];
+    $indikator_oe = $_POST['indikator_oe'];
+    $alarm_mundur = $_POST['alarm_mundur'];
+    $klakson = $_POST['klakson'];
+    $wiper = $_POST['wiper'];
+    $kerangka_boom = $_POST['kerangka_boom'];
+    $roller_hook = $_POST['roller_hook'];
+    $kp_hook = $_POST['kp_hook'];
+    $kanvas_rem_winch = $_POST['kanvas_rem_winch'];
+    $drum_winch = $_POST['drum_winch'];
+    $wire_sling = $_POST['wire_sling'];
+    $gear_swing = $_POST['gear_swing'];
+    $drums_swing = $_POST['drums_swing'];
+    $kerusakan = $_POST['kerusakan'];
+    $greasing = $_POST['greasing'];
+
+    date_default_timezone_set("Asia/Jakarta");
+    $Now = date("Y-m-d H:i:s");
+
+    // print_r($Now);
+    // die;
+
+    $insert = mysqli_query($koneksi, " INSERT INTO pre_uses ( equipment_id, user_id,air_radiator, hose_radiator, v_belt, tangki_bbm, oli_engine, oli_hydraulik, air_accu, kabel_battery, kepala_battery, tpkb, lampu_rotary, lampu_depan, lampu_rem, lampu_mundur, lampu_sein, indikator_pa, indikator_ta, indikator_oe, alarm_mundur, klakson, wiper, kerangka_boom, roller_hook, kp_hook, kanvas_rem_winch, drum_winch, wire_sling, gear_swing, drums_swing, kerusakan, greasing , created_at, updated_at)
+                                                     VALUES ( $equipment_id, $userId, $air_radiator , $hose_radiator , $v_belt , $tangki_bbm , $oli_engine , $oli_hydraulik , $air_accu , $kabel_battery , $kepala_battery , $tpkb , $lampu_rotary , $lampu_depan , $lampu_rem , $lampu_mundur , $lampu_sein , $indikator_pa , $indikator_ta , $indikator_oe , $alarm_mundur , $klakson , $wiper , $kerangka_boom , $roller_hook , $kp_hook , $kanvas_rem_winch , $drum_winch , $wire_sling , $gear_swing , $drums_swing , $kerusakan , $greasing , '$Now', '$Now')
+    ");
+
+
+    header("location:index.php?p=draft_preuse");
+}
+
+?>
+
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div class="container-fluid">
@@ -28,1796 +83,569 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form>
+                    <form method="POST" action="">
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Equipment</label>
-                                <select name="" id="" class="form-control" required>
+                                <select name="equipment_id" id="" class="form-control" required>
                                     <option value="">---Pilih Equipment---</option>
+                                    <?php
+                                    $equipments = mysqli_query($koneksi, "SELECT * FROM equipment ORDER BY name ASC");
+
+                                    foreach ($equipments as $key => $data) {
+                                        echo "<option value=" . $data['id'] . ">" . $data['name'] . "</option>";
+                                    }
+                                    ?>
                                 </select>
                             </div>
                         </div>
-                        <!-- CRANE -->
-                        <div class="card-header">
-                            <h4 class="card-title">ENGIENE</h4>
+                        <div class="card-header bg-success">
+                            <h4 class="card-title">Engine</h4>
                         </div>
-                        <!-- /.card-body -->
-
-                        <div class="col-sm-6">
-                            <!-- radio -->
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Radiator : Air Radiator</label>
+                        <!-- radio -->
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="">[Radiator] - Air Radiator</label>
                                 <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
+                                    <input class="custom-control-input" type="radio" id="customRadio1" name="air_radiator" value="1" checked>
+                                    <label for="customRadio1" class="custom-control-label">Baik</label>
                                 </div>
+                            </div>
+                            <div class="col-sm-6">
                                 <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                    <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id="customRadio2" name="air_radiator">
+                                    <label for="customRadio2" class="custom-control-label">Buruk</label>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Radiator : Hose Radiator</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
+                                <div class="col-sm-6">
+                                    <label for="exampleInputEmail1">[Radiator] - Hose Radiator</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" id="hr_y" name="hose_radiator" value="1" checked>
+                                        <label for="hr_y" class="custom-control-label">Baik</label>
+                                    </div>
                                 </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Radiator : V-Belt</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Bahan Bakar : Tangki Bahan Bakar dan Solar</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Oli : Oli Engiene</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Oli : Oli Hydraulik</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id="hr_n" name="hose_radiator">
+                                        <label for="hr_n" class="custom-control-label">Buruk</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="card-header">
-                            <h4 class="card-title">KELISTRIKAN</h4>
-                        </div>
-                        <div class="col-sm-6">
-                            <!-- radio -->
+                        <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Batteray/Accu : Air Accu</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
+                                <div class="col-sm-6">
+                                    <label for="exampleInputEmail1">[Radiator] - V-belt</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" id="vb_y" name="v_belt" value="1" checked>
+                                        <label for="vb_y" class="custom-control-label">Baik</label>
+                                    </div>
                                 </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Batteray/Accu : Kabel Batteray</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Batteray/Accu : Kepala Accu</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Batteray/Accu : Tutup Pelindung Kepala Accu</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Lampu : Lampu Rotari</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Lampu : Lampu Depan</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Lampu : Lampu Rem</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Lampu : Lampu Mundur</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Lampu : Lampu Sein</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Indikator : Pengisian Accu</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Indikator : Temperatur Air</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Indikator : Oli Engiene</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Alarm : Alarm Mundur</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Alarm : Klakson</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Wiper</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card-header">
-                            <h4 class="card-title">FUNGSI PENGEREMAN</h4>
-                        </div>
-                        <div class="col-sm-6">
-                            <!-- radio -->
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Rem Kaki : Minyak Rem</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Rem Kaki : Master Rem</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Rem Tangan : Kanvas Rem</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id="vb_n" name="v_belt">
+                                        <label for="vb_n" class="custom-control-label">Buruk</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="card-header">
-                            <h4 class="card-title">PERANGKAT PENGGERAK CRANE</h4>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Boom : Kerangka Boom</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Hook Besar & Kecil : Roller Hook</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Hook Besar & Kecil : Kunci Pengait Hook</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Winch : Kanvas Rem Winch</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Winch : Drums Winch</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Winch : Wire Sling (Boom & Load Line)</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Swing : Gear Swing</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Swing : Drum Swing</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <label for="exampleInputEmail1">[Bahan Bakar] - Tangki Bahan Bakar & solar</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" id="tb_y" name="tangki_bbm" value="1" checked>
+                                        <label for="tb_y" class="custom-control-label">Baik</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Crawler : Kerusakan</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id="tb_n" name="tangki_bbm">
+                                        <label for="tb_n" class="custom-control-label">Buruk</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Crawler : Greasing</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <label for="exampleInputEmail1">[Oli] - Oli Engine</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" id="og_y" name="oli_engine" value="1" checked>
+                                        <label for="og_y" class="custom-control-label">Baik</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="card-header">
-                            <h4 class="card-title">LAIN-LAIN</h4>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Body : Cabin & Lantai (Deck)</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id="og_n" name="oli_engine">
+                                        <label for="og_n" class="custom-control-label">Buruk</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Jok / Tempat Duduk : Karpet/Kulit Jok</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <label for="exampleInputEmail1">[Oli] - Oli Hidraulik</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" id="oh_y" name="oli_hydraulik" value="1" checked>
+                                        <label for="oh_y" class="custom-control-label">Baik</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Karpet / Kulit Jok : Sabuk Pengaman</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id="oh_n" name="oli_hydraulik">
+                                        <label for="oh_n" class="custom-control-label">Buruk</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Spion : Kaca Spion</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
-                                </div>
-                            </div>
+                        <div class="card-header bg-success">
+                            <h4 class="card-title">Kelistrikan</h4>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Track : Kekencangan</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <label for="exampleInputEmail1">[Battery/accu] - Air Accu</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" id="ac_y" name="air_accu" value="1" checked>
+                                        <label for="ac_y" class="custom-control-label">Baik</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Track : Keausan</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id="ac_n" name="air_accu">
+                                        <label for="ac_n" class="custom-control-label">Buruk</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">APAR : Tabung APAR Tersedia</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <label for="exampleInputEmail1">[Battery/accu] - Kabel Battery</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" id="kb_y" name="kabel_battery" value="1" checked>
+                                        <label for="kb_y" class="custom-control-label">Baik</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Kebocoran : Kebocoran Oli</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id="kb_n" name="kabel_battery">
+                                        <label for="kb_n" class="custom-control-label">Buruk</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Kebocoran : Kebocoran Angin</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <label for="exampleInputEmail1">[Battery/accu] - Kepala Battery</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" id="kb2_y" name="kepala_battery" value="1" checked>
+                                        <label for="kb2_y" class="custom-control-label">Baik</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Service Card : Memastikan Servis Berikutnya</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id="kb2_n" name="kepala_battery">
+                                        <label for="kb2_n" class="custom-control-label">Buruk</label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- FORKLIFT -->
-                        <div class="card-header">
-                            <h4 class="card-title">ENGIENE</h4>
                         </div>
-                        <!-- /.card-body -->
-
-                        <div class="col-sm-6">
-                            <!-- radio -->
+                        <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Radiator : Air Radiator</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <label for="exampleInputEmail1">[Battery/accu] - Tutup Pelindung Kepala Battery</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" id="tpkb_y" name="tpkb" value="1" checked>
+                                        <label for="tpkb_y" class="custom-control-label">Baik</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Radiator : Hose Radiator</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id="tpkb_n" name="tpkb">
+                                        <label for="tpkb_n" class="custom-control-label">Buruk</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Radiator : V-Belt</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <label for="exampleInputEmail1">[Lampu-lampu] - Lampu Rotary</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" id="lr_y" name="lampu_rotary" value="1" checked>
+                                        <label for="lr_y" class="custom-control-label">Baik</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Bahan Bakar : Tangki Bahan Bakar dan Solar</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id="lr_n" name="lampu_rotary">
+                                        <label for="lr_n" class="custom-control-label">Buruk</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Oli : Oli Engiene</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <label for="exampleInputEmail1">[Lampu-lampu] - Lampu Depan</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" id="ld_y" name="lampu_depan" value="1" checked>
+                                        <label for="ld_y" class="custom-control-label">Baik</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Oli : Oli Hydraulik</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id="ld_n" name="lampu_depan">
+                                        <label for="ld_n" class="custom-control-label">Buruk</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="card-header">
-                            <h4 class="card-title">KELISTRIKAN</h4>
-                        </div>
-                        <div class="col-sm-6">
-                            <!-- radio -->
+                        <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Batteray/Accu : Air Accu</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <label for="exampleInputEmail1">[Lampu-lampu] - Lampu Rem</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" id="lr2_y" name="lampu_rem" value="1" checked>
+                                        <label for="lr2_y" class="custom-control-label">Baik</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Batteray/Accu : Kabel Batteray</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id="lr2_n" name="lampu_rem">
+                                        <label for="lr2_n" class="custom-control-label">Buruk</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Batteray/Accu : Kepala Accu</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <label for="exampleInputEmail1">[Lampu-lampu] - Lampu Mundur</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" id="lm_y" name="lampu_mundur" value="1" checked>
+                                        <label for="lm_y" class="custom-control-label">Baik</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Batteray/Accu : Tutup Pelindung Kepala Accu</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id="lm_n" name="lampu_mundur">
+                                        <label for="lm_n" class="custom-control-label">Buruk</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Lampu : Lampu Rotari</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <label for="exampleInputEmail1">[Lampu-lampu] - Lampu Sein</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" id="ls_y" name="lampu_sein" value="1" checked>
+                                        <label for="ls_y" class="custom-control-label">Baik</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Lampu : Lampu Depan</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id="ls_n" name="lampu_sein">
+                                        <label for="ls_n" class="custom-control-label">Buruk</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Lampu : Lampu Rem</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <label for="exampleInputEmail1">[Indikator & Alarm] - Indikator Pengisian Accu</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" id="ipa_y" name="indikator_pa" value="1" checked>
+                                        <label for="ipa_y" class="custom-control-label">Baik</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Lampu : Lampu Mundur</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id="ipa_n" name="indikator_pa">
+                                        <label for="ipa_n" class="custom-control-label">Buruk</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Lampu : Lampu Sein</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <label for="exampleInputEmail1">[Indikator & Alarm] - Indikator Temperatur Air</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" id="ita_y" name="indikator_ta" value="1" checked>
+                                        <label for="ita_y" class="custom-control-label">Baik</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Indikator : Pengisian Accu</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id="ita_n" name="indikator_ta">
+                                        <label for="ita_n" class="custom-control-label">Buruk</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Indikator : Temperatur Air</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <label for="exampleInputEmail1">[Indikator & Alarm] - Indikator Oil Engine</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" id="ioe_y" name="indikator_oe" value="1" checked>
+                                        <label for="ioe_y" class="custom-control-label">Baik</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Indikator : Oli Engiene</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id="ioe_n" name="indikator_oe">
+                                        <label for="ioe_n" class="custom-control-label">Buruk</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Alarm : Alarm Mundur</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <label for="exampleInputEmail1">[Indikator & Alarm] - Alarm Mundur</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" id="am_y" name="alarm_mundur" value="1" checked>
+                                        <label for="am_y" class="custom-control-label">Baik</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Alarm : Klakson</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id="am_n" name="alarm_mundur">
+                                        <label for="am_n" class="custom-control-label">Buruk</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Wiper</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <label for="exampleInputEmail1">[Indikator & Alarm] - Klakson</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" id="k_y" name="klakson" value="1" checked>
+                                        <label for="k_y" class="custom-control-label">Baik</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card-header">
-                            <h4 class="card-title">FUNGSI PENGEREMAN</h4>
-                        </div>
-                        <div class="col-sm-6">
-                            <!-- radio -->
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Rem Kaki : Minyak Rem</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id="k_n" name="klakson">
+                                        <label for="k_n" class="custom-control-label">Buruk</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Rem Kaki : Master Rem</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <label for="exampleInputEmail1">[Pembersih Kaca] - Wiper</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" id="w_y" name="wiper" value="1" checked>
+                                        <label for="w_y" class="custom-control-label">Baik</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Rem Tangan : Kanvas Rem</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id="w_n" name="wiper">
+                                        <label for="w_n" class="custom-control-label">Buruk</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="card-header">
-                            <h4 class="card-title">PERANGKAT PENGGERAK FORKLIFT</h4>
+                        <div class="card-header bg-success">
+                            <h4 class="card-title">Fungsi Pengereman</h4>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Garpu / Fork : Pengunci Garpu / Lock Fork</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <label for="exampleInputEmail1">[Boom] - Kerangka Boom</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" id="kerangkab_y" name="kerangka_boom" value="1" checked>
+                                        <label for="kerangkab_y" class="custom-control-label">Baik</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Garpu / Fork : Roller Bearing Fork</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id="kerangkab_n" name="kerangka_boom">
+                                        <label for="kerangkab_n" class="custom-control-label">Buruk</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Garpu / Fork : Peengaman Garpu / Guard Fork</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <label for="exampleInputEmail1">[Hook Besar & Kecil] - Roller Hook</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" id="roller_y" name="roller_hook" value="1" checked>
+                                        <label for="roller_y" class="custom-control-label">Baik</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Chain / Rantai : Ketegangan Rantai</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id="roller_n" name="roller_hook">
+                                        <label for="roller_n" class="custom-control-label">Buruk</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Chain / Rantai : Roller Bearing Rantai</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <label for="exampleInputEmail1">[Hook Besar & Kecil] - Kunci Pengait Hook</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" id=kp_hook_y" name="kp_hook" value="1" checked>
+                                        <label for=kp_hook_y" class="custom-control-label">Baik</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Chain / Rantai : Pelumasan Rantai</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id=kp_hook_n" name="kp_hook">
+                                        <label for=kp_hook_n" class="custom-control-label">Buruk</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Cylinder Hydraulic : Cylinder Tilt</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <label for="exampleInputEmail1">[Winch] - Kanvas Rem Winch</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" id="krw_y" name="kanvas_rem_winch" value="1" checked>
+                                        <label for="krw_y" class="custom-control-label">Baik</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Cylinder Hydraulic : Cylinder Maslift</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id="krw_n" name="kanvas_rem_winch">
+                                        <label for="krw_n" class="custom-control-label">Buruk</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Cylinder Hydraulic : Cylinder Steering</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <label for="exampleInputEmail1">[Winch] - Drum Winch</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" id="dw_y" name="drum_winch" value="1" checked>
+                                        <label for="dw_y" class="custom-control-label">Baik</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Cylinder Hydraulic : Steering Axle</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id="dw_n" name="drum_winch">
+                                        <label for="dw_n" class="custom-control-label">Buruk</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="card-header">
-                            <h4 class="card-title">LAIN-LAIN</h4>
-                        </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Body : Cabin & Lantai (Deck)</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <label for="exampleInputEmail1">[Winch] - Wire Sling (boom & load line)</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" id="ws_y" name="wire_sling" value="1" checked>
+                                        <label for="ws_y" class="custom-control-label">Baik</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Jok / Tempat Duduk : Karpet/Kulit Jok</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id="ws_n" name="wire_sling">
+                                        <label for="ws_n" class="custom-control-label">Buruk</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Karpet / Kulit Jok : Sabuk Pengaman</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <label for="exampleInputEmail1">[Slewing] - Gear Swing</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" id="gs_y" name="gear_swing" value="1" checked>
+                                        <label for="gs_y" class="custom-control-label">Baik</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Spion : Kaca Spion</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id="gs_n" name="gear_swing">
+                                        <label for="gs_n" class="custom-control-label">Buruk</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Ban : Tekanan Angin</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <label for="exampleInputEmail1">[Slewing] - Drums Swing</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" id="ds_y" name="drums_swing" value="1" checked>
+                                        <label for="ds_y" class="custom-control-label">Baik</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Ban : Kembangan Ban</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id="ds_n" name="drums_swing">
+                                        <label for="ds_n" class="custom-control-label">Buruk</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">APAR : Tabung APAR Tersedia</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <label for="exampleInputEmail1">[Crawler] - Kerusakan</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" id="kerusakan_y" name="kerusakan" value="1" checked>
+                                        <label for="kerusakan_y" class="custom-control-label">Baik</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Kebocoran : Kebocoran Oli</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id="kerusakan_n" name="kerusakan">
+                                        <label for="kerusakan_n" class="custom-control-label">Buruk</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Kebocoran : Kebocoran Angin</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <label for="exampleInputEmail1">[Crawler] - Greasing</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" type="radio" id="greasing_y" name="greasing" value="1" checked>
+                                        <label for="greasing_y" class="custom-control-label">Baik</label>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Service Card : Memastikan Servis Berikutnya</label>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                    <label for="customRadio2" class="custom-control-label">Baik</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio">
-                                    <label for="customRadio4" class="custom-control-label">Buruk</label>
+                                <div class="col-sm-6">
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input custom-control-input-danger" value="0" type="radio" id="greasing_n" name="greasing">
+                                        <label for="greasing_n" class="custom-control-label">Buruk</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
                         </div>
                     </form>
                 </div>
                 <!-- /.card -->
 
-                <!-- general form elements -->
-                <div class="card card-primary">
-                    <div class="card-header">
-                        <h3 class="card-title">Different Styles</h3>
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                        <h4>Input</h4>
-                        <div class="form-group">
-                            <label for="exampleInputBorder">Bottom Border only <code>.form-control-border</code></label>
-                            <input type="text" class="form-control form-control-border" id="exampleInputBorder" placeholder=".form-control-border">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputBorderWidth2">Bottom Border only 2px Border <code>.form-control-border.border-width-2</code></label>
-                            <input type="text" class="form-control form-control-border border-width-2" id="exampleInputBorderWidth2" placeholder=".form-control-border.border-width-2">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputRounded0">Flat <code>.rounded-0</code></label>
-                            <input type="text" class="form-control rounded-0" id="exampleInputRounded0" placeholder=".rounded-0">
-                        </div>
-                        <h4>Custom Select</h4>
-                        <div class="form-group">
-                            <label for="exampleSelectBorder">Bottom Border only <code>.form-control-border</code></label>
-                            <select class="custom-select form-control-border" id="exampleSelectBorder">
-                                <option>Value 1</option>
-                                <option>Value 2</option>
-                                <option>Value 3</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleSelectBorderWidth2">Bottom Border only <code>.form-control-border.border-width-2</code></label>
-                            <select class="custom-select form-control-border border-width-2" id="exampleSelectBorderWidth2">
-                                <option>Value 1</option>
-                                <option>Value 2</option>
-                                <option>Value 3</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleSelectRounded0">Flat <code>.rounded-0</code></label>
-                            <select class="custom-select rounded-0" id="exampleSelectRounded0">
-                                <option>Value 1</option>
-                                <option>Value 2</option>
-                                <option>Value 3</option>
-                            </select>
-                        </div>
-                    </div>
-                    <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
-
-                <!-- Input addon -->
-                <div class="card card-info">
-                    <div class="card-header">
-                        <h3 class="card-title">Input Addon</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">@</span>
-                            </div>
-                            <input type="text" class="form-control" placeholder="Username">
-                        </div>
-
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control">
-                            <div class="input-group-append">
-                                <span class="input-group-text">.00</span>
-                            </div>
-                        </div>
-
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">$</span>
-                            </div>
-                            <input type="text" class="form-control">
-                            <div class="input-group-append">
-                                <span class="input-group-text">.00</span>
-                            </div>
-                        </div>
-
-                        <h4>With icons</h4>
-
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                            </div>
-                            <input type="email" class="form-control" placeholder="Email">
-                        </div>
-
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control">
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="fas fa-check"></i></span>
-                            </div>
-                        </div>
-
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="fas fa-dollar-sign"></i>
-                                </span>
-                            </div>
-                            <input type="text" class="form-control">
-                            <div class="input-group-append">
-                                <div class="input-group-text"><i class="fas fa-ambulance"></i></div>
-                            </div>
-                        </div>
-
-                        <h5 class="mt-4 mb-2">With checkbox and radio inputs</h5>
-
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">
-                                            <input type="checkbox">
-                                        </span>
-                                    </div>
-                                    <input type="text" class="form-control">
-                                </div>
-                                <!-- /input-group -->
-                            </div>
-                            <!-- /.col-lg-6 -->
-                            <div class="col-lg-6">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><input type="radio"></span>
-                                    </div>
-                                    <input type="text" class="form-control">
-                                </div>
-                                <!-- /input-group -->
-                            </div>
-                            <!-- /.col-lg-6 -->
-                        </div>
-                        <!-- /.row -->
-
-                        <h5 class="mt-4 mb-2">With buttons</h5>
-
-                        <p>Large: <code>.input-group.input-group-lg</code></p>
-
-                        <div class="input-group input-group-lg mb-3">
-                            <div class="input-group-prepend">
-                                <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
-                                    Action
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li class="dropdown-item"><a href="#">Action</a></li>
-                                    <li class="dropdown-item"><a href="#">Another action</a></li>
-                                    <li class="dropdown-item"><a href="#">Something else here</a></li>
-                                    <li class="dropdown-divider"></li>
-                                    <li class="dropdown-item"><a href="#">Separated link</a></li>
-                                </ul>
-                            </div>
-                            <!-- /btn-group -->
-                            <input type="text" class="form-control">
-                        </div>
-                        <!-- /input-group -->
-
-                        <p>Normal</p>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <button type="button" class="btn btn-danger">Action</button>
-                            </div>
-                            <!-- /btn-group -->
-                            <input type="text" class="form-control">
-                        </div>
-                        <!-- /input-group -->
-
-                        <p>Small <code>.input-group.input-group-sm</code></p>
-                        <div class="input-group input-group-sm">
-                            <input type="text" class="form-control">
-                            <span class="input-group-append">
-                                <button type="button" class="btn btn-info btn-flat">Go!</button>
-                            </span>
-                        </div>
-                        <!-- /input-group -->
-                    </div>
-                    <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
-                <!-- Horizontal Form -->
-                <div class="card card-info">
-                    <div class="card-header">
-                        <h3 class="card-title">Horizontal Form</h3>
-                    </div>
-                    <!-- /.card-header -->
-                    <!-- form start -->
-                    <form class="form-horizontal">
-                        <div class="card-body">
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-                                <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-                                <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="offset-sm-2 col-sm-10">
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="exampleCheck2">
-                                        <label class="form-check-label" for="exampleCheck2">Remember me</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.card-body -->
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-info">Sign in</button>
-                            <button type="submit" class="btn btn-default float-right">Cancel</button>
-                        </div>
-                        <!-- /.card-footer -->
-                    </form>
-                </div>
-                <!-- /.card -->
 
             </div>
-            <!--/.col (left) -->
-            <!-- right column -->
-            <div class="col-md-6">
-                <!-- Form Element sizes -->
-                <div class="card card-success">
-                    <div class="card-header">
-                        <h3 class="card-title">Different Height</h3>
-                    </div>
-                    <div class="card-body">
-                        <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg">
-                        <br>
-                        <input class="form-control" type="text" placeholder="Default input">
-                        <br>
-                        <input class="form-control form-control-sm" type="text" placeholder=".form-control-sm">
-                    </div>
-                    <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
 
-                <div class="card card-danger">
-                    <div class="card-header">
-                        <h3 class="card-title">Different Width</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-3">
-                                <input type="text" class="form-control" placeholder=".col-3">
-                            </div>
-                            <div class="col-4">
-                                <input type="text" class="form-control" placeholder=".col-4">
-                            </div>
-                            <div class="col-5">
-                                <input type="text" class="form-control" placeholder=".col-5">
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
-
-                <!-- general form elements disabled -->
-                <div class="card card-warning">
-                    <div class="card-header">
-                        <h3 class="card-title">General Elements</h3>
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                        <form>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <!-- text input -->
-                                    <div class="form-group">
-                                        <label>Text</label>
-                                        <input type="text" class="form-control" placeholder="Enter ...">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Text Disabled</label>
-                                        <input type="text" class="form-control" placeholder="Enter ..." disabled>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <!-- textarea -->
-                                    <div class="form-group">
-                                        <label>Textarea</label>
-                                        <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Textarea Disabled</label>
-                                        <textarea class="form-control" rows="3" placeholder="Enter ..." disabled></textarea>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- input states -->
-                            <div class="form-group">
-                                <label class="col-form-label" for="inputSuccess"><i class="fas fa-check"></i> Input with
-                                    success</label>
-                                <input type="text" class="form-control is-valid" id="inputSuccess" placeholder="Enter ...">
-                            </div>
-                            <div class="form-group">
-                                <label class="col-form-label" for="inputWarning"><i class="far fa-bell"></i> Input with
-                                    warning</label>
-                                <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Enter ...">
-                            </div>
-                            <div class="form-group">
-                                <label class="col-form-label" for="inputError"><i class="far fa-times-circle"></i> Input with
-                                    error</label>
-                                <input type="text" class="form-control is-invalid" id="inputError" placeholder="Enter ...">
-                            </div>
-
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <!-- checkbox -->
-                                    <div class="form-group">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox">
-                                            <label class="form-check-label">Checkbox</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" checked>
-                                            <label class="form-check-label">Checkbox checked</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" disabled>
-                                            <label class="form-check-label">Checkbox disabled</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <!-- radio -->
-                                    <div class="form-group">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="radio1">
-                                            <label class="form-check-label">Radio</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="radio1" checked>
-                                            <label class="form-check-label">Radio checked</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" disabled>
-                                            <label class="form-check-label">Radio disabled</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <!-- select -->
-                                    <div class="form-group">
-                                        <label>Select</label>
-                                        <select class="form-control">
-                                            <option>option 1</option>
-                                            <option>option 2</option>
-                                            <option>option 3</option>
-                                            <option>option 4</option>
-                                            <option>option 5</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Select Disabled</label>
-                                        <select class="form-control" disabled>
-                                            <option>option 1</option>
-                                            <option>option 2</option>
-                                            <option>option 3</option>
-                                            <option>option 4</option>
-                                            <option>option 5</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <!-- Select multiple-->
-                                    <div class="form-group">
-                                        <label>Select Multiple</label>
-                                        <select multiple class="form-control">
-                                            <option>option 1</option>
-                                            <option>option 2</option>
-                                            <option>option 3</option>
-                                            <option>option 4</option>
-                                            <option>option 5</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Select Multiple Disabled</label>
-                                        <select multiple class="form-control" disabled>
-                                            <option>option 1</option>
-                                            <option>option 2</option>
-                                            <option>option 3</option>
-                                            <option>option 4</option>
-                                            <option>option 5</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
-                <!-- general form elements disabled -->
-                <div class="card card-secondary">
-                    <div class="card-header">
-                        <h3 class="card-title">Custom Elements</h3>
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                        <form>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <!-- checkbox -->
-                                    <div class="form-group">
-                                        <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-                                            <label for="customCheckbox1" class="custom-control-label">Custom Checkbox</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" id="customCheckbox2" checked>
-                                            <label for="customCheckbox2" class="custom-control-label">Custom Checkbox checked</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" id="customCheckbox3" disabled>
-                                            <label for="customCheckbox3" class="custom-control-label">Custom Checkbox disabled</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input custom-control-input-danger" type="checkbox" id="customCheckbox4" checked>
-                                            <label for="customCheckbox4" class="custom-control-label">Custom Checkbox with custom color</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input custom-control-input-danger custom-control-input-outline" type="checkbox" id="customCheckbox5" checked>
-                                            <label for="customCheckbox5" class="custom-control-label">Custom Checkbox with custom color outline</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <!-- radio -->
-                                    <div class="form-group">
-                                        <div class="custom-control custom-radio">
-                                            <input class="custom-control-input" type="radio" id="customRadio1" name="customRadio">
-                                            <label for="customRadio1" class="custom-control-label">Custom Radio</label>
-                                        </div>
-                                        <div class="custom-control custom-radio">
-                                            <input class="custom-control-input" type="radio" id="customRadio2" name="customRadio" checked>
-                                            <label for="customRadio2" class="custom-control-label">Custom Radio checked</label>
-                                        </div>
-                                        <div class="custom-control custom-radio">
-                                            <input class="custom-control-input" type="radio" id="customRadio3" disabled>
-                                            <label for="customRadio3" class="custom-control-label">Custom Radio disabled</label>
-                                        </div>
-                                        <div class="custom-control custom-radio">
-                                            <input class="custom-control-input custom-control-input-danger" type="radio" id="customRadio4" name="customRadio2" checked>
-                                            <label for="customRadio4" class="custom-control-label">Custom Radio with custom color</label>
-                                        </div>
-                                        <div class="custom-control custom-radio">
-                                            <input class="custom-control-input custom-control-input-danger custom-control-input-outline" type="radio" id="customRadio5" name="customRadio2">
-                                            <label for="customRadio5" class="custom-control-label">Custom Radio with custom color outline</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <!-- select -->
-                                    <div class="form-group">
-                                        <label>Custom Select</label>
-                                        <select class="custom-select">
-                                            <option>option 1</option>
-                                            <option>option 2</option>
-                                            <option>option 3</option>
-                                            <option>option 4</option>
-                                            <option>option 5</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Custom Select Disabled</label>
-                                        <select class="custom-select" disabled>
-                                            <option>option 1</option>
-                                            <option>option 2</option>
-                                            <option>option 3</option>
-                                            <option>option 4</option>
-                                            <option>option 5</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <!-- Select multiple-->
-                                    <div class="form-group">
-                                        <label>Custom Select Multiple</label>
-                                        <select multiple class="custom-select">
-                                            <option>option 1</option>
-                                            <option>option 2</option>
-                                            <option>option 3</option>
-                                            <option>option 4</option>
-                                            <option>option 5</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Custom Select Multiple Disabled</label>
-                                        <select multiple class="custom-select" disabled>
-                                            <option>option 1</option>
-                                            <option>option 2</option>
-                                            <option>option 3</option>
-                                            <option>option 4</option>
-                                            <option>option 5</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                                    <label class="custom-control-label" for="customSwitch1">Toggle this custom switch element</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                                    <input type="checkbox" class="custom-control-input" id="customSwitch3">
-                                    <label class="custom-control-label" for="customSwitch3">Toggle this custom switch element with custom colors danger/success</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" disabled id="customSwitch2">
-                                    <label class="custom-control-label" for="customSwitch2">Disabled custom switch element</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="customRange1">Custom range</label>
-                                <input type="range" class="custom-range" id="customRange1">
-                            </div>
-                            <div class="form-group">
-                                <label for="customRange2">Custom range (custom-range-danger)</label>
-                                <input type="range" class="custom-range custom-range-danger" id="customRange2">
-                            </div>
-                            <div class="form-group">
-                                <label for="customRange3">Custom range (custom-range-teal)</label>
-                                <input type="range" class="custom-range custom-range-teal" id="customRange3">
-                            </div>
-                            <div class="form-group">
-                                <!-- <label for="customFile">Custom File</label> -->
-
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="customFile">
-                                    <label class="custom-file-label" for="customFile">Choose file</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                            </div>
-                        </form>
-                    </div>
-                    <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
-            </div>
-            <!--/.col (right) -->
         </div>
         <!-- /.row -->
     </div><!-- /.container-fluid -->
