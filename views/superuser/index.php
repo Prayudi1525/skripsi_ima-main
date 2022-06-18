@@ -280,7 +280,7 @@ $userId = $rowUser['id'];
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="pages/forms/general.html" class="nav-link">
+                  <a href="index.php?p=preuse_approval" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Approval Pre Use</p>
                   </a>

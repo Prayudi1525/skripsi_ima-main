@@ -12,4 +12,6 @@ if ($page == 'formpesan') {
     include_once "draft_preuse.php";
 } else if ($page == 'preuse_detail') {
     include_once "preuse_detail.php";
+} else if ($page == 'preuse_approval') {
+    include_once "preuse_approval.php";
 }
