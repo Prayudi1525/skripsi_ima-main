@@ -32,7 +32,7 @@ $data = mysqli_query($koneksi, "SELECT p.*, e.name  FROM pre_uses p
     <div class="container-fluid">
         <div class="row">
             <!-- left column -->
-            <div class="col-md-8">
+            <div class="col-md-9">
                 <!-- general form elements -->
                 <div class="card card-primary">
                     <div class="card-header">
@@ -47,7 +47,7 @@ $data = mysqli_query($koneksi, "SELECT p.*, e.name  FROM pre_uses p
                                     <th>Date</th>
                                     <th>Equipment</th>
                                     <th>Inspection</th>
-                                    <th>Release</th>
+                                    <th>Approved</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -82,7 +82,10 @@ $data = mysqli_query($koneksi, "SELECT p.*, e.name  FROM pre_uses p
 
                                             ?>
                                             <?= $total ?></td>
-                                        <td></td>
+                                        <td>
+                                            <button class="btn bg-primary"><i class="fa fa-check"></i></button>
+                                            <button class="btn bg-danger"><i class="fa fa-window-close"></i></button>
+                                        </td>
                                     </tr>
 
                                 <?php
