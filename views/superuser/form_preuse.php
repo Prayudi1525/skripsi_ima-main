@@ -107,7 +107,7 @@ if (isset($_POST['simpan'])) {
                             <div class="col-sm-6">
                                 <label for="">[Radiator] - Air Radiator</label>
                                 <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="customRadio1" name="air_radiator" value="1" checked>
+                                    <input class="custom-control-input" type="radio" id="customRadio1" name="air_radiator" value="1" required>
                                     <label for="customRadio1" class="custom-control-label">Baik</label>
                                 </div>
                             </div>
@@ -123,7 +123,7 @@ if (isset($_POST['simpan'])) {
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">[Radiator] - Hose Radiator</label>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="hr_y" name="hose_radiator" value="1" checked>
+                                        <input class="custom-control-input" type="radio" id="hr_y" name="hose_radiator" value="1" required>
                                         <label for="hr_y" class="custom-control-label">Baik</label>
                                     </div>
                                 </div>
@@ -141,7 +141,7 @@ if (isset($_POST['simpan'])) {
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">[Radiator] - V-belt</label>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="vb_y" name="v_belt" value="1" checked>
+                                        <input class="custom-control-input" type="radio" id="vb_y" name="v_belt" value="1" required>
                                         <label for="vb_y" class="custom-control-label">Baik</label>
                                     </div>
                                 </div>
@@ -159,7 +159,7 @@ if (isset($_POST['simpan'])) {
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">[Bahan Bakar] - Tangki Bahan Bakar & solar</label>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="tb_y" name="tangki_bbm" value="1" checked>
+                                        <input class="custom-control-input" type="radio" id="tb_y" name="tangki_bbm" value="1" required>
                                         <label for="tb_y" class="custom-control-label">Baik</label>
                                     </div>
                                 </div>
@@ -176,7 +176,7 @@ if (isset($_POST['simpan'])) {
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">[Oli] - Oli Engine</label>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="og_y" name="oli_engine" value="1" checked>
+                                        <input class="custom-control-input" type="radio" id="og_y" name="oli_engine" value="1" required>
                                         <label for="og_y" class="custom-control-label">Baik</label>
                                     </div>
                                 </div>
@@ -193,7 +193,7 @@ if (isset($_POST['simpan'])) {
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">[Oli] - Oli Hidraulik</label>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="oh_y" name="oli_hydraulik" value="1" checked>
+                                        <input class="custom-control-input" type="radio" id="oh_y" name="oli_hydraulik" value="1" required>
                                         <label for="oh_y" class="custom-control-label">Baik</label>
                                     </div>
                                 </div>
@@ -213,7 +213,7 @@ if (isset($_POST['simpan'])) {
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">[Battery/accu] - Air Accu</label>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="ac_y" name="air_accu" value="1" checked>
+                                        <input class="custom-control-input" type="radio" id="ac_y" name="air_accu" value="1" required>
                                         <label for="ac_y" class="custom-control-label">Baik</label>
                                     </div>
                                 </div>
@@ -230,7 +230,7 @@ if (isset($_POST['simpan'])) {
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">[Battery/accu] - Kabel Battery</label>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="kb_y" name="kabel_battery" value="1" checked>
+                                        <input class="custom-control-input" type="radio" id="kb_y" name="kabel_battery" value="1" required>
                                         <label for="kb_y" class="custom-control-label">Baik</label>
                                     </div>
                                 </div>
@@ -247,7 +247,7 @@ if (isset($_POST['simpan'])) {
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">[Battery/accu] - Kepala Battery</label>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="kb2_y" name="kepala_battery" value="1" checked>
+                                        <input class="custom-control-input" type="radio" id="kb2_y" name="kepala_battery" value="1" required>
                                         <label for="kb2_y" class="custom-control-label">Baik</label>
                                     </div>
                                 </div>
@@ -264,7 +264,7 @@ if (isset($_POST['simpan'])) {
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">[Battery/accu] - Tutup Pelindung Kepala Battery</label>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="tpkb_y" name="tpkb" value="1" checked>
+                                        <input class="custom-control-input" type="radio" id="tpkb_y" name="tpkb" value="1" required>
                                         <label for="tpkb_y" class="custom-control-label">Baik</label>
                                     </div>
                                 </div>
@@ -281,7 +281,7 @@ if (isset($_POST['simpan'])) {
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">[Lampu-lampu] - Lampu Rotary</label>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="lr_y" name="lampu_rotary" value="1" checked>
+                                        <input class="custom-control-input" type="radio" id="lr_y" name="lampu_rotary" value="1" required>
                                         <label for="lr_y" class="custom-control-label">Baik</label>
                                     </div>
                                 </div>
@@ -298,7 +298,7 @@ if (isset($_POST['simpan'])) {
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">[Lampu-lampu] - Lampu Depan</label>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="ld_y" name="lampu_depan" value="1" checked>
+                                        <input class="custom-control-input" type="radio" id="ld_y" name="lampu_depan" value="1" required>
                                         <label for="ld_y" class="custom-control-label">Baik</label>
                                     </div>
                                 </div>
@@ -315,7 +315,7 @@ if (isset($_POST['simpan'])) {
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">[Lampu-lampu] - Lampu Rem</label>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="lr2_y" name="lampu_rem" value="1" checked>
+                                        <input class="custom-control-input" type="radio" id="lr2_y" name="lampu_rem" value="1" required>
                                         <label for="lr2_y" class="custom-control-label">Baik</label>
                                     </div>
                                 </div>
@@ -332,7 +332,7 @@ if (isset($_POST['simpan'])) {
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">[Lampu-lampu] - Lampu Mundur</label>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="lm_y" name="lampu_mundur" value="1" checked>
+                                        <input class="custom-control-input" type="radio" id="lm_y" name="lampu_mundur" value="1" required>
                                         <label for="lm_y" class="custom-control-label">Baik</label>
                                     </div>
                                 </div>
@@ -349,7 +349,7 @@ if (isset($_POST['simpan'])) {
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">[Lampu-lampu] - Lampu Sein</label>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="ls_y" name="lampu_sein" value="1" checked>
+                                        <input class="custom-control-input" type="radio" id="ls_y" name="lampu_sein" value="1" required>
                                         <label for="ls_y" class="custom-control-label">Baik</label>
                                     </div>
                                 </div>
@@ -366,7 +366,7 @@ if (isset($_POST['simpan'])) {
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">[Indikator & Alarm] - Indikator Pengisian Accu</label>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="ipa_y" name="indikator_pa" value="1" checked>
+                                        <input class="custom-control-input" type="radio" id="ipa_y" name="indikator_pa" value="1" required>
                                         <label for="ipa_y" class="custom-control-label">Baik</label>
                                     </div>
                                 </div>
@@ -383,7 +383,7 @@ if (isset($_POST['simpan'])) {
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">[Indikator & Alarm] - Indikator Temperatur Air</label>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="ita_y" name="indikator_ta" value="1" checked>
+                                        <input class="custom-control-input" type="radio" id="ita_y" name="indikator_ta" value="1" required>
                                         <label for="ita_y" class="custom-control-label">Baik</label>
                                     </div>
                                 </div>
@@ -400,7 +400,7 @@ if (isset($_POST['simpan'])) {
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">[Indikator & Alarm] - Indikator Oil Engine</label>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="ioe_y" name="indikator_oe" value="1" checked>
+                                        <input class="custom-control-input" type="radio" id="ioe_y" name="indikator_oe" value="1" required>
                                         <label for="ioe_y" class="custom-control-label">Baik</label>
                                     </div>
                                 </div>
@@ -417,7 +417,7 @@ if (isset($_POST['simpan'])) {
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">[Indikator & Alarm] - Alarm Mundur</label>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="am_y" name="alarm_mundur" value="1" checked>
+                                        <input class="custom-control-input" type="radio" id="am_y" name="alarm_mundur" value="1" required>
                                         <label for="am_y" class="custom-control-label">Baik</label>
                                     </div>
                                 </div>
@@ -434,7 +434,7 @@ if (isset($_POST['simpan'])) {
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">[Indikator & Alarm] - Klakson</label>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="k_y" name="klakson" value="1" checked>
+                                        <input class="custom-control-input" type="radio" id="k_y" name="klakson" value="1" required>
                                         <label for="k_y" class="custom-control-label">Baik</label>
                                     </div>
                                 </div>
@@ -451,7 +451,7 @@ if (isset($_POST['simpan'])) {
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">[Pembersih Kaca] - Wiper</label>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="w_y" name="wiper" value="1" checked>
+                                        <input class="custom-control-input" type="radio" id="w_y" name="wiper" value="1" required>
                                         <label for="w_y" class="custom-control-label">Baik</label>
                                     </div>
                                 </div>
@@ -471,7 +471,7 @@ if (isset($_POST['simpan'])) {
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">[Boom] - Kerangka Boom</label>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="kerangkab_y" name="kerangka_boom" value="1" checked>
+                                        <input class="custom-control-input" type="radio" id="kerangkab_y" name="kerangka_boom" value="1" required>
                                         <label for="kerangkab_y" class="custom-control-label">Baik</label>
                                     </div>
                                 </div>
@@ -488,7 +488,7 @@ if (isset($_POST['simpan'])) {
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">[Hook Besar & Kecil] - Roller Hook</label>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="roller_y" name="roller_hook" value="1" checked>
+                                        <input class="custom-control-input" type="radio" id="roller_y" name="roller_hook" value="1" required>
                                         <label for="roller_y" class="custom-control-label">Baik</label>
                                     </div>
                                 </div>
@@ -505,7 +505,7 @@ if (isset($_POST['simpan'])) {
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">[Hook Besar & Kecil] - Kunci Pengait Hook</label>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id=kp_hook_y" name="kp_hook" value="1" checked>
+                                        <input class="custom-control-input" type="radio" id=kp_hook_y" name="kp_hook" value="1" required>
                                         <label for=kp_hook_y" class="custom-control-label">Baik</label>
                                     </div>
                                 </div>
@@ -522,7 +522,7 @@ if (isset($_POST['simpan'])) {
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">[Winch] - Kanvas Rem Winch</label>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="krw_y" name="kanvas_rem_winch" value="1" checked>
+                                        <input class="custom-control-input" type="radio" id="krw_y" name="kanvas_rem_winch" value="1" required>
                                         <label for="krw_y" class="custom-control-label">Baik</label>
                                     </div>
                                 </div>
@@ -539,7 +539,7 @@ if (isset($_POST['simpan'])) {
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">[Winch] - Drum Winch</label>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="dw_y" name="drum_winch" value="1" checked>
+                                        <input class="custom-control-input" type="radio" id="dw_y" name="drum_winch" value="1" required>
                                         <label for="dw_y" class="custom-control-label">Baik</label>
                                     </div>
                                 </div>
@@ -556,7 +556,7 @@ if (isset($_POST['simpan'])) {
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">[Winch] - Wire Sling (boom & load line)</label>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="ws_y" name="wire_sling" value="1" checked>
+                                        <input class="custom-control-input" type="radio" id="ws_y" name="wire_sling" value="1" required>
                                         <label for="ws_y" class="custom-control-label">Baik</label>
                                     </div>
                                 </div>
@@ -573,7 +573,7 @@ if (isset($_POST['simpan'])) {
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">[Slewing] - Gear Swing</label>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="gs_y" name="gear_swing" value="1" checked>
+                                        <input class="custom-control-input" type="radio" id="gs_y" name="gear_swing" value="1" required>
                                         <label for="gs_y" class="custom-control-label">Baik</label>
                                     </div>
                                 </div>
@@ -590,7 +590,7 @@ if (isset($_POST['simpan'])) {
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">[Slewing] - Drums Swing</label>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="ds_y" name="drums_swing" value="1" checked>
+                                        <input class="custom-control-input" type="radio" id="ds_y" name="drums_swing" value="1" required>
                                         <label for="ds_y" class="custom-control-label">Baik</label>
                                     </div>
                                 </div>
@@ -607,7 +607,7 @@ if (isset($_POST['simpan'])) {
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">[Crawler] - Kerusakan</label>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="kerusakan_y" name="kerusakan" value="1" checked>
+                                        <input class="custom-control-input" type="radio" id="kerusakan_y" name="kerusakan" value="1" required>
                                         <label for="kerusakan_y" class="custom-control-label">Baik</label>
                                     </div>
                                 </div>
@@ -624,7 +624,7 @@ if (isset($_POST['simpan'])) {
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">[Crawler] - Greasing</label>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="greasing_y" name="greasing" value="1" checked>
+                                        <input class="custom-control-input" type="radio" id="greasing_y" name="greasing" value="1" required>
                                         <label for="greasing_y" class="custom-control-label">Baik</label>
                                     </div>
                                 </div>

@@ -14,4 +14,10 @@ if ($page == 'formpesan') {
     include_once "preuse_detail.php";
 } else if ($page == 'preuse_approval') {
     include_once "preuse_approval.php";
+} else if ($page == 'preuse_verifikasi') {
+    include_once "preuse_verifikasi.php";
+} else if ($page == 'preuse_transaksi') {
+    include_once "preuse_transaksi.php";
+} else if ($page == 'equipment') {
+    include_once "equipment.php";
 }
