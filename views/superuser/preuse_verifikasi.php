@@ -105,7 +105,8 @@ $data = mysqli_query($koneksi, "SELECT p.*, e.name  FROM pre_uses p
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#approve-<?= $pu['id'] ?>">
                                                 <i class="fa fa-check"></i>
                                             </button>
-                                            <button class="btn bg-danger"><i class="fa fa-window-close"></i></button>
+                                            <a href="?p=preuse_detail&id=<?= base64_encode($pu['id']) ?>"><button class="btn bg-warning"><i class="fa fa-search"></i></button></a>
+
 
                                             <!-- Modal -->
                                             <div class="modal fade" id="approve-<?= $pu['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -131,6 +132,8 @@ $data = mysqli_query($koneksi, "SELECT p.*, e.name  FROM pre_uses p
                                                 </div>
                                             </div>
                                             <!-- End Modal -->
+
+
                                         </td>
                                     </tr>
 

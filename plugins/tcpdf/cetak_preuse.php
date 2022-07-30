@@ -41,7 +41,7 @@ function fetch_data()
     // while ($row = mysqli_fetch_array($result)) {
     $output .= "
                 <tr>
-                  <td style='text-align: center; rowspan=\"2\"; ' > Engine </td>
+                  <td style='vertical-align: middle; rowspan=\"2\"; ' > Engine </td>
                   <td style='text-align: center;'> 1 </td>
                   <td style='text-align: center;'> [Radiator] - Air Radiator </td>
                   <td style='text-align: center;'> v </td>
