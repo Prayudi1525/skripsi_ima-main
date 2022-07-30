@@ -20,4 +20,6 @@ if ($page == 'formpesan') {
     include_once "preuse_transaksi.php";
 } else if ($page == 'equipment') {
     include_once "equipment.php";
+} else if ($page == 'cetak_preuse') {
+    include_once "cetak_preuse.php";
 }

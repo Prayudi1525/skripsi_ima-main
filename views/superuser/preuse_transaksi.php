@@ -81,7 +81,7 @@ $data = mysqli_query($koneksi, "SELECT p.*, e.name  FROM pre_uses p
 
                                             ?>
                                             <?= $total ?>
-                                            <a href="../../plugins/tcpdf/cetak_preuse.php"><button class="btn btn-primary"><i class="fa fa-file-pdf"></i> Print</button></a>
+                                            <a href="../../plugins/tcpdf/cetak_preuse.php?id=<?= base64_encode($pu['id']) ?>"><button class="btn btn-primary"><i class="fa fa-file-pdf"></i> Print</button></a>
                                         </td>
                                     </tr>
 

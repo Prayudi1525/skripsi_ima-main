@@ -4,11 +4,11 @@ function fetch_data()
 {
     //output
     ob_end_clean();
-    include "../../functions/connect.php";
+    // include "../../fungsi/koneksi.php";
 
-    if (isset($_GET['id'])) {
-        $id = base64_decode($_GET['id']);
-    }
+    // if (isset($_GET['id'])) {
+    //     $idJoborder = $_GET['id'];
+    // }
     $output = '';
 
     // $sql = "SELECT ac.time_as, ac.id_cargo, ac.doc_no_as, sum(ac.qty_as) as qty_as, ac.rincian_cargo, j.p, j.l, j.t, ac.remarks_as, ac.keterangan, sum(ac.m3_as) as m3_as, sum(ac.ton_as) as ton_as, sum(ac.revton_as) as revton_as, d.id_cargo
@@ -29,15 +29,10 @@ function fetch_data()
 
     // $i = 1;
 
-    $sqlTotal = "SELECT * FROM pre_uses
-            WHERE id = '$id'";
-    $total = mysqli_query($koneksi, $sqlTotal);
-    $data = mysqli_fetch_assoc($total);
-
-    // print_r($data);
-    // die;
-
-
+    // $sqlTotal = "SELECT total_cargo FROM job_order
+    //         WHERE id_joborder = '$idJoborder'";
+    // $total = mysqli_query($koneksi, $sqlTotal);
+    // $rowTotal = mysqli_fetch_array($total);
 
     // $sm3 = 0.00;
     // $ston = 0.00;
@@ -49,7 +44,7 @@ function fetch_data()
                   <td style='text-align: center; rowspan=\"6\"; ' > Engine </td>
                   <td style='text-align: center;'> 1 </td>
                   <td style='text-align: center;'> [Radiator] - Air Radiator </td>
-                  <td style='text-align: center;'> " . $data['air_radiator'] . " </td>
+                  <td style='text-align: center;'> v </td>
                   <td style='text-align: center;'> </td>
                 </tr>
 
@@ -225,72 +220,72 @@ function fetch_data()
               </tr>
 
               <tr>
-                <td style='text-align: center; rowspan=\"10\"; ' >  Perangkat Penggerak Crane </td>
+                <td style='text-align: center; rowspan=\"10\"; ' >  Perangkat Penggerak Forklift </td>
                 <td style='text-align: center;'> 26 </td>
-                <td style='text-align: center;'> [Boom] - Kerangka Boom </td>
+                <td style='text-align: center;'> [Fork / garpu] - Pengunci Garpu / Lock Fork </td>
                 <td style='text-align: center;'> v </td>
                 <td style='text-align: center;'> </td>
               </tr>
 
               <tr>
                 <td style='text-align: center;'> 27 </td>
-                <td style='text-align: center;'> [Hook Besar & Kecil] - Roller Hook </td>
+                <td style='text-align: center;'> [Fork / garpu] - Roller Bearing Fork </td>
                 <td style='text-align: center;'> v </td>
                 <td style='text-align: center;'> </td>
               </tr>
 
               <tr>
                 <td style='text-align: center;'> 28 </td>
-                <td style='text-align: center;'> [Hook Besar & Kecil] - Kunci Pengait Hook </td>
+                <td style='text-align: center;'> [Fork / garpu] - Pengaman Garpu / Guard Fork </td>
                 <td style='text-align: center;'> v </td>
                 <td style='text-align: center;'> </td>
               </tr>
 
               <tr>
                 <td style='text-align: center;'> 29 </td>
-                <td style='text-align: center;'> [Winch] - Kanvas Rem Winch </td>
+                <td style='text-align: center;'> [Chain / Rantai] - Ketegangan Rantai </td>
                 <td style='text-align: center;'> v </td>
                 <td style='text-align: center;'> </td>
               </tr>
 
               <tr>
                 <td style='text-align: center;'> 30 </td>
-                <td style='text-align: center;'> [Winch] - Drums Winch </td>
+                <td style='text-align: center;'> [Chain / Rantai] - Roller Bearing Rantai </td>
                 <td style='text-align: center;'> v </td>
                 <td style='text-align: center;'> </td>
               </tr>
 
               <tr>
                 <td style='text-align: center;'> 31 </td>
-                <td style='text-align: center;'> [Winch] - Wire Sling (Boom & Load Line) </td>
+                <td style='text-align: center;'> [Chain / Rantai] - Pelumasan Rantai / Chain Greasing </td>
                 <td style='text-align: center;'> v </td>
                 <td style='text-align: center;'> </td>
               </tr>
 
               <tr>
                 <td style='text-align: center;'> 32 </td>
-                <td style='text-align: center;'> [Slewing] - Gear Swing </td>
+                <td style='text-align: center;'> [Cylinder Hydraulic] - Cylinder Tilt </td>
                 <td style='text-align: center;'> v </td>
                 <td style='text-align: center;'> </td>
               </tr>
 
               <tr>
                 <td style='text-align: center;'> 33 </td>
-                <td style='text-align: center;'> [Slewing] - Drums Swing </td>
+                <td style='text-align: center;'> [Cylinder Hydraulic] - Cylinder Maslift </td>
                 <td style='text-align: center;'> v </td>
                 <td style='text-align: center;'> </td>
               </tr>
 
               <tr>
                 <td style='text-align: center;'> 34 </td>
-                <td style='text-align: center;'> [Crawler] - Kerusakan </td>
+                <td style='text-align: center;'> [Cylinder Hydraulic] - Cylinder Steering </td>
                 <td style='text-align: center;'> v </td>
                 <td style='text-align: center;'> </td>
               </tr>
 
               <tr>
                 <td style='text-align: center;'> 35 </td>
-                <td style='text-align: center;'> [Crawler] - Greasing </td>
+                <td style='text-align: center;'> [Cylinder Hydraulic] - Steering Axle </td>
                 <td style='text-align: center;'> v </td>
                 <td style='text-align: center;'> </td>
               </tr>
