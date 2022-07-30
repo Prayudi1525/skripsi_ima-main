@@ -220,72 +220,72 @@ function fetch_data()
               </tr>
 
               <tr>
-                <td style='text-align: center; rowspan=\"10\"; ' >  Perangkat Penggerak Crane </td>
+                <td style='text-align: center; rowspan=\"10\"; ' >  Perangkat Penggerak Forklift </td>
                 <td style='text-align: center;'> 26 </td>
-                <td style='text-align: center;'> [Boom] - Kerangka Boom </td>
+                <td style='text-align: center;'> [Fork / garpu] - Pengunci Garpu / Lock Fork </td>
                 <td style='text-align: center;'> v </td>
                 <td style='text-align: center;'> </td>
               </tr>
 
               <tr>
                 <td style='text-align: center;'> 27 </td>
-                <td style='text-align: center;'> [Hook Besar & Kecil] - Roller Hook </td>
+                <td style='text-align: center;'> [Fork / garpu] - Roller Bearing Fork </td>
                 <td style='text-align: center;'> v </td>
                 <td style='text-align: center;'> </td>
               </tr>
 
               <tr>
                 <td style='text-align: center;'> 28 </td>
-                <td style='text-align: center;'> [Hook Besar & Kecil] - Kunci Pengait Hook </td>
+                <td style='text-align: center;'> [Fork / garpu] - Pengaman Garpu / Guard Fork </td>
                 <td style='text-align: center;'> v </td>
                 <td style='text-align: center;'> </td>
               </tr>
 
               <tr>
                 <td style='text-align: center;'> 29 </td>
-                <td style='text-align: center;'> [Winch] - Kanvas Rem Winch </td>
+                <td style='text-align: center;'> [Chain / Rantai] - Ketegangan Rantai </td>
                 <td style='text-align: center;'> v </td>
                 <td style='text-align: center;'> </td>
               </tr>
 
               <tr>
                 <td style='text-align: center;'> 30 </td>
-                <td style='text-align: center;'> [Winch] - Drums Winch </td>
+                <td style='text-align: center;'> [Chain / Rantai] - Roller Bearing Rantai </td>
                 <td style='text-align: center;'> v </td>
                 <td style='text-align: center;'> </td>
               </tr>
 
               <tr>
                 <td style='text-align: center;'> 31 </td>
-                <td style='text-align: center;'> [Winch] - Wire Sling (Boom & Load Line) </td>
+                <td style='text-align: center;'> [Chain / Rantai] - Pelumasan Rantai / Chain Greasing </td>
                 <td style='text-align: center;'> v </td>
                 <td style='text-align: center;'> </td>
               </tr>
 
               <tr>
                 <td style='text-align: center;'> 32 </td>
-                <td style='text-align: center;'> [Slewing] - Gear Swing </td>
+                <td style='text-align: center;'> [Cylinder Hydraulic] - Cylinder Tilt </td>
                 <td style='text-align: center;'> v </td>
                 <td style='text-align: center;'> </td>
               </tr>
 
               <tr>
                 <td style='text-align: center;'> 33 </td>
-                <td style='text-align: center;'> [Slewing] - Drums Swing </td>
+                <td style='text-align: center;'> [Cylinder Hydraulic] - Cylinder Maslift </td>
                 <td style='text-align: center;'> v </td>
                 <td style='text-align: center;'> </td>
               </tr>
 
               <tr>
                 <td style='text-align: center;'> 34 </td>
-                <td style='text-align: center;'> [Crawler] - Kerusakan </td>
+                <td style='text-align: center;'> [Cylinder Hydraulic] - Cylinder Steering </td>
                 <td style='text-align: center;'> v </td>
                 <td style='text-align: center;'> </td>
               </tr>
 
               <tr>
                 <td style='text-align: center;'> 35 </td>
-                <td style='text-align: center;'> [Crawler] - Greasing </td>
+                <td style='text-align: center;'> [Cylinder Hydraulic] - Steering Axle </td>
                 <td style='text-align: center;'> v </td>
                 <td style='text-align: center;'> </td>
               </tr>
