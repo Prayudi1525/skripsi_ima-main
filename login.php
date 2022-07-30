@@ -76,6 +76,16 @@ if (isset($_POST['login'])) {
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
 </head>
 
+<style>
+  .body {
+    background-image: url('gambar/logoenc.jpg');
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+  }
+</style>
+
 <body class="hold-transition login-page">
   <div class="login-box">
     <!-- /.login-logo -->
