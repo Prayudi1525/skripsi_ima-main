@@ -217,6 +217,15 @@ $userId = $rowUser['id'];
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
+
+      <?php
+      if (isset($_COOKIE['pesan'])) {
+        echo "
+      <br>
+      <div class='alert " . $_COOKIE['warna'] . "' role='alert'><b>" . $_COOKIE['pesan'] . "</b></div>";
+      }
+      ?>
+
       <?php include "page.php"; ?>
       <!-- /.content -->
     </div>

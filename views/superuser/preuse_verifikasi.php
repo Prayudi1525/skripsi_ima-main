@@ -1,10 +1,29 @@
 <?php
 
+if (isset($_POST['approved'])) {
+
+    $id = $_POST['id'];
+    // print_r($_POST);
+
+    $updateStatus = mysqli_query($koneksi, "UPDATE pre_uses SET status = '3' WHERE id = '$id'  ");
+
+    if ($updateStatus) {
+        setcookie('pesan', 'Pre Use berhasil di Approved!', time() + (3), '/');
+        setcookie('warna', 'alert-success', time() + (3), '/');
+    } else {
+
+        setcookie('pesan', 'Pre Use gagal di Approved!', time() + (3), '/');
+        setcookie('warna', 'alert-danger', time() + (3), '/');
+
+        // die("ada kesalahan : " . mysqli_error($koneksi));
+    }
+    header("location:index.php?p=preuse_approval");
+}
 
 $data = mysqli_query($koneksi, "SELECT p.*, e.name  FROM pre_uses p 
                                 JOIN equipment e 
                                 ON p.equipment_id = e.id
-                                WHERE p.status = '0'
+                                WHERE p.status = '2'
                                 ");
 
 ?>
@@ -83,8 +102,35 @@ $data = mysqli_query($koneksi, "SELECT p.*, e.name  FROM pre_uses p
                                             ?>
                                             <?= $total ?></td>
                                         <td>
-                                            <button class="btn bg-primary"><i class="fa fa-check"></i></button>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#approve-<?= $pu['id'] ?>">
+                                                <i class="fa fa-check"></i>
+                                            </button>
                                             <button class="btn bg-danger"><i class="fa fa-window-close"></i></button>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="approve-<?= $pu['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <form action="" method="post">
+                                                            <input type="hidden" name="id" value="<?= $pu['id'] ?>">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Konfirmasi</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Apa anda yakin ingin menyetujui preuse checklist <?= $pu['name'] ?> ?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                <button type="submit" name="approved" class="btn btn-primary">Approved</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Modal -->
                                         </td>
                                     </tr>
 

@@ -4,7 +4,7 @@
 $data = mysqli_query($koneksi, "SELECT p.*, e.name  FROM pre_uses p 
                                 JOIN equipment e 
                                 ON p.equipment_id = e.id
-                                WHERE p.status = '0'
+                                WHERE p.status = '3'
                                 ");
 
 ?>
